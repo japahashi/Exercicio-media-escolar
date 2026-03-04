@@ -5,6 +5,8 @@ const entradaDeDados = readline.createInterface({
     output: process.stdout
 
 })
+const calculos = require("./model/calcular.js")
+
 
 entradaDeDados.question("Qual é o nome do aluno(a)?: ", function(nomeA){
 
@@ -45,7 +47,29 @@ entradaDeDados.question("Qual é o nome do aluno(a)?: ", function(nomeA){
                                     entradaDeDados.question("valor da quarta nota: ", function(nota4){
 
                                         let valorNota4 = nota4
-                                                  
+
+                                        let validar = calculos.validarDados(nota1,nota2,nota3,nota4)
+                                        
+
+                                        if(validar){
+
+                                            let resultado = calculos.calculoMedia(nota1,nota2,nota3,nota4,)
+                                            let sexoAl = calculos.verificarSexoAluno(sexoAluno)
+                                            let sexoPf = calculos.verificarSexoProfessor(sexoProfessor)
+                                            let aprovacao = calculos.aprovacaoAluno(resultado)
+
+                                            
+
+                                                console.log(`${sexoAl} ${nomeAluno} foi ${aprovacao} na disciplina ${disciplina}.
+                                                    \nCurso: ${curso}
+                                                    \n${sexoPf} : ${nomeProfessor} 
+                                                    \nNotas do aluno: ${nota1,nota2,nota3,nota4}
+                                                    \nMédia Final: ${resultado}
+                                                    `)
+
+                                            
+
+                                        }
                                     })
                                 }) 
                             })
